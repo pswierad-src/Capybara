@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Capybara.Infrastructure
 {
@@ -22,9 +23,7 @@ namespace Capybara.Infrastructure
 
             IServiceCollection services = builder.Services;
 
-            string capybaraString = configuration.GetConnectionString("Capybara");
-            services.AddDbContext<CapybaraContext>(options => options.UseSqlServer(capybaraString));
-            services.AddScoped<ICapybaraContext, CapybaraContext>();
+            services.AddDatabase(configuration);
 
             services.AddTransient<IBookRepository, BookRepository>();
 
@@ -36,6 +35,25 @@ namespace Capybara.Infrastructure
             app.UseConvey();
 
             return app;
+        }
+
+        private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
+        {
+            bool useInMemory = Convert.ToBoolean(configuration.GetSection("UseInMemoryDatabase").Value);
+
+            if (useInMemory)
+            {
+                services.AddDbContext<CapybaraContext>(options => options.UseInMemoryDatabase("Capybara"));
+            }
+            else
+            {
+                string capybaraString = configuration.GetConnectionString("Capybara");
+                services.AddDbContext<CapybaraContext>(options => options.UseSqlServer(capybaraString));
+            }
+
+            services.AddScoped<ICapybaraContext, CapybaraContext>();
+
+            return services;
         }
     }
 }
