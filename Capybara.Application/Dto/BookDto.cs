@@ -10,8 +10,6 @@ namespace Capybara.Application.Dto
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
-        [Required]
         public decimal Price { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }

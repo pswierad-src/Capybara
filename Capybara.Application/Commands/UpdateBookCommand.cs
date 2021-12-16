@@ -7,14 +7,12 @@ namespace Capybara.Application.Commands
     {
         public Guid Id { get; set; }
         public string Title { get; }
-        public string Author { get; }
         public decimal Price { get; }
 
-        public UpdateBookCommand(Guid id, string title, string author, decimal price)
+        public UpdateBookCommand(Guid id, string title, decimal price)
         {
             Id = id;
             Title = title;
-            Author = author;
             Price = price;
         }
     }

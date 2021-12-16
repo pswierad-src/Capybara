@@ -24,7 +24,7 @@ namespace Capybara.Application.Commands.Handlers
                 throw new EntityNotFoundInDatabaseException();
             }
 
-            book.Update(command.Title, command.Author, command.Price);
+            book.Update(command.Title, command.Price);
 
             await repository.UpdateAsync(book);
         }

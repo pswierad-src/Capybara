@@ -24,7 +24,6 @@ namespace Capybara.Infrastructure.Queries.Handlers
             {
                 Id = x.Id,
                 Title = x.Title,
-                Author = x.Author
             }).ToListAsync();
         }
     }

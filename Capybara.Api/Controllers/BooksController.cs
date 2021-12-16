@@ -38,7 +38,6 @@ namespace Capybara.Api.Controllers
         {
             await commandDispatcher.SendAsync(new CreateBookCommand(
                 request.Title,
-                request.Author,
                 request.Price));
 
             return Ok();
@@ -50,7 +49,6 @@ namespace Capybara.Api.Controllers
             await commandDispatcher.SendAsync(new UpdateBookCommand(
                 id,
                 request.Title,
-                request.Author,
                 request.Price));
 
             return Ok();

@@ -16,7 +16,7 @@ namespace Capybara.Application.Commands.Handlers
 
         public async Task HandleAsync(CreateBookCommand command)
         {
-            Book book = new Book(command.Title, command.Author, command.Price);
+            Book book = new Book(command.Title, command.Price);
 
             await repository.AddAsync(book);
         }

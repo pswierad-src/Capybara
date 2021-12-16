@@ -4,14 +4,16 @@ using Capybara.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Capybara.Infrastructure.Migrations
 {
     [DbContext(typeof(CapybaraContext))]
-    partial class CapybaraContextModelSnapshot : ModelSnapshot
+    [Migration("20211216102335_AddedAuthor")]
+    partial class AddedAuthor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

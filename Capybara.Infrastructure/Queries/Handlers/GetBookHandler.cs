@@ -31,7 +31,6 @@ namespace Capybara.Infrastructure.Queries.Handlers
             {
                 Id = book.Id,
                 Title = book.Title,
-                Author = book.Author,
                 Price = book.Price,
                 CreatedAt = book.DateCreated,
                 ModifiedAt = book.DateModified
